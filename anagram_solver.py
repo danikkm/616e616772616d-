@@ -3,7 +3,7 @@ from itertools import combinations
 from Trie import Trie
 from Encoder import Encoder
 from Generator import Generator
-import helper as ßh
+import helper as h
 from itertools import permutations
 import timeit
 
