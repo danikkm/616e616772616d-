@@ -8,6 +8,7 @@ class TrieNode:
         self.is_end_of_word = False
         self.words = []
 
+
 class Trie:
     def __init__(self):
         self.root = TrieNode("*")
@@ -21,7 +22,7 @@ class Trie:
             node = node.children[letter]
         node.is_end_of_word = True
         node.words.append(word)
-        
+
     def does_word_exists(self, word):
         if word == "":
             return True
@@ -32,8 +33,8 @@ class Trie:
             node = node.children[letter]
         return node.is_end_of_word
 
-    def anagrams(self, anagram_counter, word_len, num_of_words = 0):
-        
+    def anagrams(self, anagram_counter, word_len, num_of_words=0):
+
         first_letter = sorted(anagram_counter)[0]
         first_letter_counter = Counter(first_letter)
 
@@ -44,7 +45,7 @@ class Trie:
                     for word in words:
                         yield word,
                 else:
-                    for word_list in self.anagrams(anagram_counter - counter_of_first_letters, num_of_words = num_of_words + 1, word_len = word_len):
+                    for word_list in self.anagrams(anagram_counter - counter_of_first_letters, num_of_words=num_of_words + 1, word_len=word_len):
                         for word in words:
                             yield (word,) + word_list
 
@@ -58,7 +59,3 @@ class Trie:
 
     def trim(self, x):
         return "".join(x.split())
-
-
-
-    

@@ -1,52 +1,33 @@
 from itertools import combinations
-from string import ascii_lowercase as alphabet
-from collections import Counter
+
 from Trie import Trie
-import helper as h
+from Encoder import Encoder
+from Generator import Generator
+import helper as ßh
 from itertools import permutations
-from hashlib import md5
-import timeit 
+import timeit
 
-
-"""
-        Todo: 
-            create new class: hash encoder from all anagrams
-"""
 
 def main():
-
+    generator = Generator()
+    encoder = Encoder()
     anagrams = []
     base_string = "poultry outwits ants"
+    encoded_md5hash = "23170acc097c24edb98fc5488ab033fe"
     word_len = base_string.count(" ") + 1
-    
-    encoded_hash = "23170acc097c24edb98fc5488ab033fe"
 
     try:
         f = open('set_of_' + str(word_len) + "_anagrams.dms")
         for line in f:
             anagrams.append(tuple(line.strip().split(' ')))
-
-    except FileNotFoundError:
-        words = h.read_words('clean_words.dms')
-        anagram_counter = Counter(h.trim(base_string))
-
-        trie = Trie()
-
-        for word in words:
-            trie.add_word(word)
-
-        print("Generating anagrams...")
-        for anagram in trie.anagrams(anagram_counter, word_len = word_len):
-            anagrams.append(anagram)
-        print("Done!")
-
-    print("Encoding hash: " + encoded_hash + "\n")
-    for wordtuple in anagrams:
-        for anagtuple in permutations(wordtuple):
-            anagram = ' '.join(anagtuple)
-            anagram_hash = md5(anagram.encode()).hexdigest()
-            if anagram_hash == encoded_hash:
-                print('Target anagram found: ' + anagram)
+        encoder.run(base_string, encoded_md5hash)
+    except IOError:
+        print("File not found, generating...")
+        generator.run(base_string)
+        f = open('set_of_' + str(word_len) + "_anagrams.dms")
+        for line in f:
+            anagrams.append(tuple(line.strip().split(' ')))
+        encoder.run(base_string, encoded_md5hash)
 
 if __name__ == '__main__':
     main()
