@@ -1,4 +1,9 @@
 *.pyc
 __pycache__
+<<<<<<< HEAD
 .DS_Store
 .gitignore
+=======
+.gitignore
+.DS_Store
+>>>>>>> 675907d8aed2a130729704cabbabbae4b70a0a47
