@@ -42,7 +42,7 @@ class Trie:
                 counter_of_first_letters = Counter(words[0])
                 if anagram_counter == counter_of_first_letters:
                     for word in words:
-                        yield (word,)
+                        yield word,
                 else:
                     for word_list in self.anagrams(anagram_counter - counter_of_first_letters, num_of_words = num_of_words + 1, word_len = word_len):
                         for word in words:
@@ -50,11 +50,11 @@ class Trie:
 
     def possible_words(self, anagram_counter, node):
         if len(node.words) > 0:
-            yield tuple(node.words)
+            yield (node.words)
         for letter in anagram_counter:
             if letter in node.children:
                 for words in self.possible_words(anagram_counter - Counter(letter), node.children[letter]):
-                    yield tuple(words)
+                    yield (words)
 
     def trim(self, x):
         return "".join(x.split())

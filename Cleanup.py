@@ -23,8 +23,8 @@ class Cleanup:
                 i += 1
         self.words = sorted(list(set(self.unnecessary_wrods)))
 
-    def trim(self, str):
-        return "".join(str.split())
+    def trim(self, string_to_trim):
+        return "".join(string_to_trim.split())
 
     def save_to_file(self, fname):
         with open(fname, 'w') as filehandle:
