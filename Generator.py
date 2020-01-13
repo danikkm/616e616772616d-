@@ -31,6 +31,7 @@ class Generator:
             self.trie.add_word(word)
         for anagram in self.trie.anagrams(anagram_counter, word_len=word_len):
             self.anagrams.append(anagram)
+        sorted(self.anagrams)
 
     def trim(self, string_to_trim):
         return "".join(string_to_trim.split())
