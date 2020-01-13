@@ -29,5 +29,6 @@ def main():
             anagrams.append(tuple(line.strip().split(' ')))
         encoder.run(base_string, encoded_md5hash)
 
+
 if __name__ == '__main__':
     main()

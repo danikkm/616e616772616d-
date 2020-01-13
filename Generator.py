@@ -50,4 +50,5 @@ class Generator:
             cleanup.run(self.get_base_string())
             self.read_words("clean_words.dms")
         self.calc()
-        self.save_to_file("set_of_" + str(self.get_base_string().count(" ") + 1) + "_anagrams.dms")
+        self.save_to_file(
+            "set_of_" + str(self.get_base_string().count(" ") + 1) + "_anagrams.dms")
