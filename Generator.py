@@ -1,6 +1,6 @@
 from collections import Counter
 from Trie import Trie
-from Cleanup import Cleanup
+from cleanup import Cleanup
 
 
 class Generator:

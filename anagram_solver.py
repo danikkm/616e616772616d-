@@ -1,8 +1,8 @@
 from itertools import combinations
 
-from Trie import Trie
-from Encoder import Encoder
-from Generator import Generator
+from trie import Trie
+from encoder import Encoder
+from generator import Generator
 import helper as h
 from itertools import permutations
 import timeit
