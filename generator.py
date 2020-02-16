@@ -1,5 +1,5 @@
 from collections import Counter
-from Trie import Trie
+from trie import Trie
 from cleanup import Cleanup
 
 
